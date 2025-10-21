@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install @supabase/supabase-js @supabase/ssr)",
+      "Bash(npm run dev)",
+      "Read(//c/Users/Brain/.claude/**)",
+      "Bash(npm install zod)",
+      "Bash(npm install clsx tailwind-merge)",
+      "Bash(npm run build)",
+      "Bash(curl -s http://localhost:3000/learn)",
+      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/srs\")",
+      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/types\")",
+      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/actions\")",
+      "Bash(touch \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/actions/study.ts\")",
+      "Bash(npx supabase --version)",
+      "Bash(cat src/components/flashcard/Flashcard.tsx)",
+      "Bash(npx supabase db reset --db-url \"postgresql://postgres.pcjnpijsvdrctwdaiwwc:qsc445!@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres\")",
+      "Bash(npx tsx scripts/check-data.ts)",
+      "Bash(cat .env.local)",
+      "Bash(source .env.local)",
+      "Bash(npx supabase db push --help)",
+      "Bash(npx supabase db push --dry-run)",
+      "Bash(git add .)",
+      "Bash(git commit -m \"feat: Complete Phase 7 - Integration & Testing\n\n- Add review page with SRS-based review items\n- Implement Skeleton UI loading states\n- Add Activity Heatmap to dashboard\n- Fix TypeScript build errors for production\n- Complete gamification system integration\n- Ready for Vercel deployment\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

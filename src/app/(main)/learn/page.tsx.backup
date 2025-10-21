@@ -1,0 +1,190 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { FlashcardDeck, AnyLearningItem, AnswerQuality } from '@/components/flashcard';
+import { getStudyItems, recordAnswer, completeStudySession } from '@/lib/actions/study';
+import { Button } from '@/components/common/Button';
+import { Spinner } from '@/components/common/Loading';
+
+/**
+ * 학습하기 페이지
+ */
+export default function LearnPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [items, setItems] = useState<AnyLearningItem[]>([]);
+  const [isComplete, setIsComplete] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sessionStartTime] = useState(Date.now());
+  const [answeredCount, setAnsweredCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+
+  // 학습 항목 로드
+  useEffect(() => {
+    async function loadItems() {
+      try {
+        setIsLoading(true);
+        const data = await getStudyItems(5); // 5개 항목 가져오기
+
+        if (data.allItems.length === 0) {
+          setError('학습할 항목이 없습니다. 관리자에게 문의하세요.');
+          return;
+        }
+
+        // API 타입을 플래시카드 타입으로 변환
+        const formattedItems: AnyLearningItem[] = data.allItems.map(item => ({
+          id: item.id,
+          type: item.type,
+          jlptLevel: item.jlpt_level,
+          content: item.content,
+          reading: item.reading || undefined,
+          meaning: item.meaning,
+          exampleSentence: item.example_sentence || undefined,
+          exampleReading: item.example_reading || undefined,
+          exampleMeaning: item.example_translation || undefined,
+        }));
+
+        setItems(formattedItems);
+      } catch (err) {
+        console.error('학습 항목 로드 실패:', err);
+        setError('학습 항목을 불러오는데 실패했습니다.');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadItems();
+  }, []);
+
+  const handleAnswer = async (itemId: string, quality: AnswerQuality) => {
+    try {
+      // SRS 알고리즘으로 답변 기록
+      await recordAnswer({
+        itemId,
+        quality,
+      });
+
+      setAnsweredCount(prev => prev + 1);
+      if (quality >= 2) {
+        setCorrectCount(prev => prev + 1);
+      }
+    } catch (err) {
+      console.error('답변 기록 실패:', err);
+    }
+  };
+
+  const handleComplete = async () => {
+    try {
+      const duration = Math.floor((Date.now() - sessionStartTime) / 1000);
+
+      // 세션 완료 기록
+      await completeStudySession({
+        itemsStudied: answeredCount,
+        itemsCorrect: correctCount,
+        newItems: items.length,
+        reviewItems: 0, // 현재는 모두 신규 항목
+        duration,
+      });
+
+      setIsComplete(true);
+    } catch (err) {
+      console.error('세션 완료 처리 실패:', err);
+      setIsComplete(true); // 에러가 나도 완료 화면 표시
+    }
+  };
+
+  const handleExit = () => {
+    router.push('/dashboard');
+  };
+
+  // 로딩 중
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <Spinner size="lg" />
+          <p className="mt-4 text-gray-600">학습 항목을 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 에러
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            오류 발생
+          </h1>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <Button onClick={handleExit} variant="primary">
+            대시보드로 돌아가기
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // 완료 화면
+  if (isComplete) {
+    const accuracy = answeredCount > 0
+      ? Math.round((correctCount / answeredCount) * 100)
+      : 0;
+
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div className="text-6xl mb-4">🎉</div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            학습 완료!
+          </h1>
+          <p className="text-gray-600 mb-6">
+            {items.length}개의 카드를 모두 학습했습니다.
+          </p>
+
+          {/* 통계 */}
+          <div className="bg-gray-50 rounded-lg p-4 mb-6 space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-600">답변한 카드</span>
+              <span className="font-semibold text-gray-900">{answeredCount}개</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-600">정답률</span>
+              <span className="font-semibold text-gray-900">{accuracy}%</span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <Button
+              onClick={() => window.location.reload()}
+              variant="primary"
+              className="w-full"
+            >
+              다시 학습하기
+            </Button>
+            <Button
+              onClick={handleExit}
+              variant="secondary"
+              className="w-full"
+            >
+              대시보드로 돌아가기
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 플래시카드 학습
+  return (
+    <FlashcardDeck
+      items={items}
+      onAnswer={handleAnswer}
+      onComplete={handleComplete}
+      onExit={handleExit}
+    />
+  );
+}
