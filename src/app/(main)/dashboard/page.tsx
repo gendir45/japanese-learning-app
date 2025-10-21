@@ -38,10 +38,10 @@ export default async function DashboardPage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
       {/* 헤더 */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           안녕하세요, {user.email?.split('@')[0]}님! 👋
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-gray-600 dark:text-gray-300">
           오늘도 일본어 학습을 시작해볼까요?
         </p>
       </div>

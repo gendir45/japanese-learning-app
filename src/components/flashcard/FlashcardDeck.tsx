@@ -75,18 +75,18 @@ export function FlashcardDeck({
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-gray-600">학습할 항목이 없습니다.</p>
+          <p className="text-xl text-gray-600 dark:text-gray-400">학습할 항목이 없습니다.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* 헤더 */}
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             학습하기
           </h1>
           <Button variant="ghost" onClick={handleExit}>

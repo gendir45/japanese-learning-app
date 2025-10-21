@@ -37,15 +37,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-600',
+        'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus-visible:ring-blue-600',
       secondary:
-        'bg-gray-600 text-white hover:bg-gray-700 focus-visible:ring-gray-600',
+        'bg-gray-600 text-white hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-600 focus-visible:ring-gray-600',
       outline:
-        'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus-visible:ring-blue-600',
+        'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-900/20 focus-visible:ring-blue-600',
       ghost:
-        'text-gray-700 hover:bg-gray-100 focus-visible:ring-gray-600',
+        'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 focus-visible:ring-gray-600',
       danger:
-        'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-600',
+        'bg-red-600 text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 focus-visible:ring-red-600',
     };
 
     const sizes = {

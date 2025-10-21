@@ -56,7 +56,7 @@ export function LoginForm() {
       {/* 에러 메시지 */}
       {error && (
         <div
-          className="rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-800"
+          className="rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 text-sm text-red-800 dark:text-red-400"
           role="alert"
         >
           {error}
@@ -67,7 +67,7 @@ export function LoginForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           이메일
         </label>
@@ -77,7 +77,7 @@ export function LoginForm() {
           type="email"
           autoComplete="email"
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
           placeholder="your@email.com"
           disabled={isLoading}
         />
@@ -87,7 +87,7 @@ export function LoginForm() {
       <div>
         <label
           htmlFor="password"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           비밀번호
         </label>
@@ -97,7 +97,7 @@ export function LoginForm() {
           type="password"
           autoComplete="current-password"
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
           placeholder="••••••••"
           disabled={isLoading}
         />

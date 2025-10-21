@@ -11,13 +11,13 @@ interface AuthGroupLayoutProps {
  */
 export default function AuthGroupLayout({ children }: AuthGroupLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       {/* 상단 로고 */}
       <header className="w-full py-6">
         <div className="mx-auto max-w-md px-4">
           <Link
             href="/"
-            className="flex items-center justify-center gap-2 text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
+            className="flex items-center justify-center gap-2 text-2xl font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
           >
             <span className="text-3xl">🇯🇵</span>
             <span>Japanese Learning</span>
@@ -34,7 +34,7 @@ export default function AuthGroupLayout({ children }: AuthGroupLayoutProps) {
 
       {/* 푸터 */}
       <footer className="w-full py-6">
-        <div className="mx-auto max-w-md px-4 text-center text-sm text-gray-600">
+        <div className="mx-auto max-w-md px-4 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>© 2025 Japanese Learning App. All rights reserved.</p>
         </div>
       </footer>

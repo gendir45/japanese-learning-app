@@ -26,10 +26,10 @@ export function Card({
   ...props
 }: CardProps) {
   const variants = {
-    default: 'bg-white border border-gray-200',
+    default: 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
     interactive:
-      'bg-white border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer',
-    highlighted: 'bg-blue-50 border-2 border-blue-300',
+      'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-md transition-all cursor-pointer',
+    highlighted: 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-500',
   };
 
   return (
@@ -71,7 +71,7 @@ export function CardTitle({
 }: CardTitleProps) {
   return (
     <Component
-      className={cn('text-xl font-semibold text-gray-900', className)}
+      className={cn('text-xl font-semibold text-gray-900 dark:text-white', className)}
       {...props}
     >
       {children}
@@ -89,7 +89,7 @@ export function CardDescription({
   ...props
 }: CardDescriptionProps) {
   return (
-    <p className={cn('mt-2 text-sm text-gray-600', className)} {...props}>
+    <p className={cn('mt-2 text-sm text-gray-600 dark:text-gray-300', className)} {...props}>
       {children}
     </p>
   );
@@ -114,7 +114,7 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 export function CardFooter({ children, className, ...props }: CardFooterProps) {
   return (
     <div
-      className={cn('p-6 pt-4 border-t border-gray-100', className)}
+      className={cn('p-6 pt-4 border-t border-gray-100 dark:border-gray-700', className)}
       {...props}
     >
       {children}
