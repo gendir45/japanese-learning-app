@@ -317,18 +317,17 @@ export async function getDashboardStats() {
       .eq('user_id', userId)
       .lte('next_review_at', new Date().toISOString());
 
-    // 신규 항목 수 (진도가 없는 항목)
-    const { data: allItems } = await supabase
+    // 신규 항목 수 계산 (최적화: count만 사용)
+    const { count: totalItemsCount } = await supabase
       .from('learning_items')
-      .select('id');
+      .select('*', { count: 'exact', head: true });
 
-    const { data: progressItems } = await supabase
+    const { count: progressItemsCount } = await supabase
       .from('user_progress')
-      .select('item_id')
+      .select('*', { count: 'exact', head: true })
       .eq('user_id', userId);
 
-    const progressIds = new Set(progressItems?.map(p => p.item_id) || []);
-    const newItemsCount = (allItems?.length || 0) - progressIds.size;
+    const newItemsCount = (totalItemsCount || 0) - (progressItemsCount || 0);
 
     // 마스터한 항목 수
     const { count: masteredCount } = await supabase
