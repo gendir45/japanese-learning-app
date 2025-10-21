@@ -85,7 +85,7 @@ export default async function DashboardPage() {
                   {stats.todayReviewCount}개의 카드가 복습을 기다리고 있어요
                 </CardDescription>
               </div>
-              <div className="text-4xl font-bold text-blue-600">
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">
                 {stats.todayReviewCount}
               </div>
             </div>
@@ -109,7 +109,7 @@ export default async function DashboardPage() {
                   오늘 {stats.newItemsCount}개의 새로운 항목을 학습해보세요
                 </CardDescription>
               </div>
-              <div className="text-4xl font-bold text-green-600">
+              <div className="text-4xl font-bold text-green-600 dark:text-green-400">
                 {stats.newItemsCount}
               </div>
             </div>
@@ -132,10 +132,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-lg">연속 학습 🔥</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-orange-600 mb-2">
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">
               {stats.currentStreak}일
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               대단해요! 계속 이어가보세요
             </p>
           </CardContent>
@@ -147,10 +147,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-lg">마스터 완료 ✨</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-purple-600 mb-2">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
               {stats.masteredItemsCount}
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               학습을 완료한 항목 수
             </p>
           </CardContent>
@@ -162,10 +162,10 @@ export default async function DashboardPage() {
             <CardTitle className="text-lg">정답률 📈</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-blue-600 mb-2">
+            <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
               {stats.accuracyRate}%
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               전체 정답률
             </p>
           </CardContent>

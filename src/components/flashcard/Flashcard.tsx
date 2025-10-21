@@ -33,14 +33,14 @@ export function Flashcard({ item, isFlipped, onFlip, className }: FlashcardProps
         <div
           className={cn(
             'absolute inset-0 backface-hidden',
-            'bg-white dark:bg-gray-800 border-2 border-blue-200 dark:border-blue-600 rounded-2xl shadow-lg',
+            'bg-white dark:bg-gradient-to-br dark:from-blue-950 dark:to-indigo-950 border-2 border-blue-200 dark:border-blue-500 rounded-2xl shadow-xl',
             'flex items-center justify-center p-8'
           )}
         >
           <div className="text-center">
             {/* 후리가나(발음) - 작은 글씨로 위에 표시 */}
             {item.reading && !isFlipped && (
-              <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-2" lang="ja">
+              <p className="text-xl md:text-2xl text-gray-500 dark:text-blue-300 mb-2" lang="ja">
                 {item.reading}
               </p>
             )}
@@ -55,7 +55,7 @@ export function Flashcard({ item, isFlipped, onFlip, className }: FlashcardProps
         <div
           className={cn(
             'absolute inset-0 backface-hidden rotate-y-180',
-            'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border-2 border-blue-300 dark:border-blue-600 rounded-2xl shadow-lg',
+            'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-indigo-950 dark:to-purple-950 border-2 border-blue-300 dark:border-purple-500 rounded-2xl shadow-xl',
             'flex flex-col items-center justify-center p-8 overflow-y-auto'
           )}
         >
