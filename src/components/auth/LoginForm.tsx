@@ -21,18 +21,31 @@ export function LoginForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
+      console.log('🔐 로그인 시도 시작...');
       const result = await signIn(formData);
+      console.log('📩 서버 응답:', result);
 
       if (result?.error) {
+        console.error('❌ 로그인 실패:', result.error);
         setError(result.error);
         setIsLoading(false);
       } else if (result?.success) {
+        console.log('✅ 로그인 성공! 대시보드로 이동...');
         // 로그인 성공 시 대시보드로 이동
         router.push('/dashboard');
         router.refresh();
+      } else {
+        console.error('⚠️ 예상치 못한 응답:', result);
+        setError('예상치 못한 응답입니다. 다시 시도해주세요.');
+        setIsLoading(false);
       }
     } catch (err) {
-      console.error('로그인 에러:', err);
+      console.error('💥 로그인 에러:', err);
+      // 에러 객체의 전체 내용 출력
+      if (err instanceof Error) {
+        console.error('에러 메시지:', err.message);
+        console.error('에러 스택:', err.stack);
+      }
       setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
       setIsLoading(false);
     }

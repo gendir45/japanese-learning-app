@@ -1,32 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install @supabase/supabase-js @supabase/ssr)",
-      "Bash(npm run dev)",
-      "Read(//c/Users/Brain/.claude/**)",
-      "Bash(npm install zod)",
-      "Bash(npm install clsx tailwind-merge)",
-      "Bash(npm run build)",
-      "Bash(curl -s http://localhost:3000/learn)",
-      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/srs\")",
-      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/types\")",
-      "Bash(mkdir -p \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/actions\")",
-      "Bash(touch \"c:/Users/Brain/Desktop/work/japanese-learning-app/src/lib/actions/study.ts\")",
-      "Bash(npx supabase --version)",
-      "Bash(cat src/components/flashcard/Flashcard.tsx)",
-      "Bash(npx supabase db reset --db-url \"postgresql://postgres.pcjnpijsvdrctwdaiwwc:qsc445!@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres\")",
-      "Bash(npx tsx scripts/check-data.ts)",
-      "Bash(cat .env.local)",
-      "Bash(source .env.local)",
-      "Bash(npx supabase db push --help)",
-      "Bash(npx supabase db push --dry-run)",
-      "Bash(git add .)",
-      "Bash(git commit -m \"feat: Complete Phase 7 - Integration & Testing\n\n- Add review page with SRS-based review items\n- Implement Skeleton UI loading states\n- Add Activity Heatmap to dashboard\n- Fix TypeScript build errors for production\n- Complete gamification system integration\n- Ready for Vercel deployment\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
-      "Bash(git remote add origin https://github.com/gendir45/japanese-learning-app.git)",
-      "Bash(git branch -M main)",
-      "Bash(git push -u origin main)",
-      "Bash(git commit -m \"fix: 로그인 fetch failed 오류 수정\n\n- Server Action에서 redirect() 제거하고 success 반환\n- 클라이언트에서 라우팅 처리하도록 변경\n- 에러 메시지 한글화\n- 더 나은 에러 처리 및 로깅 추가\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
-      "Bash(git push)"
+      "Bash(test -f .env.local)",
+      "Bash(git commit -m \"debug: 로그인 디버깅 로그 추가\n\n- 클라이언트와 서버 양쪽에 상세 로그 추가\n- 에러 원인 파악을 위한 디버깅 코드\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": []

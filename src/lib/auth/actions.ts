@@ -43,28 +43,39 @@ export async function signUp(formData: FormData) {
  * 이메일/비밀번호 로그인
  */
 export async function signIn(formData: FormData) {
-  const supabase = await createClient()
+  try {
+    console.log('🔧 Server Action: signIn 시작');
+    const supabase = await createClient()
 
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  }
-
-  const { error } = await supabase.auth.signInWithPassword(data)
-
-  if (error) {
-    // 에러 메시지를 한글로 변환
-    let errorMessage = error.message;
-    if (error.message.includes('Invalid login credentials')) {
-      errorMessage = '이메일 또는 비밀번호가 올바르지 않습니다.';
-    } else if (error.message.includes('Email not confirmed')) {
-      errorMessage = '이메일 인증이 완료되지 않았습니다. 이메일을 확인해주세요.';
+    const data = {
+      email: formData.get('email') as string,
+      password: formData.get('password') as string,
     }
-    return { error: errorMessage }
-  }
 
-  revalidatePath('/', 'layout')
-  return { success: true }
+    console.log('📧 로그인 시도:', { email: data.email });
+
+    const { error, data: authData } = await supabase.auth.signInWithPassword(data)
+
+    if (error) {
+      console.error('❌ Supabase 인증 오류:', error);
+      // 에러 메시지를 한글로 변환
+      let errorMessage = error.message;
+      if (error.message.includes('Invalid login credentials')) {
+        errorMessage = '이메일 또는 비밀번호가 올바르지 않습니다.';
+      } else if (error.message.includes('Email not confirmed')) {
+        errorMessage = '이메일 인증이 완료되지 않았습니다. 이메일을 확인해주세요.';
+      }
+      return { error: errorMessage }
+    }
+
+    console.log('✅ Supabase 인증 성공:', { userId: authData?.user?.id });
+
+    revalidatePath('/', 'layout')
+    return { success: true }
+  } catch (error) {
+    console.error('💥 Server Action 에러:', error);
+    return { error: '서버 오류가 발생했습니다.' }
+  }
 }
 
 /**
