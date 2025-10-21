@@ -36,7 +36,7 @@ export async function signUp(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  return { success: true }
 }
 
 /**
@@ -53,11 +53,18 @@ export async function signIn(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data)
 
   if (error) {
-    return { error: error.message }
+    // 에러 메시지를 한글로 변환
+    let errorMessage = error.message;
+    if (error.message.includes('Invalid login credentials')) {
+      errorMessage = '이메일 또는 비밀번호가 올바르지 않습니다.';
+    } else if (error.message.includes('Email not confirmed')) {
+      errorMessage = '이메일 인증이 완료되지 않았습니다. 이메일을 확인해주세요.';
+    }
+    return { error: errorMessage }
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  return { success: true }
 }
 
 /**

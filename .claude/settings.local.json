@@ -21,7 +21,12 @@
       "Bash(npx supabase db push --help)",
       "Bash(npx supabase db push --dry-run)",
       "Bash(git add .)",
-      "Bash(git commit -m \"feat: Complete Phase 7 - Integration & Testing\n\n- Add review page with SRS-based review items\n- Implement Skeleton UI loading states\n- Add Activity Heatmap to dashboard\n- Fix TypeScript build errors for production\n- Complete gamification system integration\n- Ready for Vercel deployment\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"feat: Complete Phase 7 - Integration & Testing\n\n- Add review page with SRS-based review items\n- Implement Skeleton UI loading states\n- Add Activity Heatmap to dashboard\n- Fix TypeScript build errors for production\n- Complete gamification system integration\n- Ready for Vercel deployment\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git remote add origin https://github.com/gendir45/japanese-learning-app.git)",
+      "Bash(git branch -M main)",
+      "Bash(git push -u origin main)",
+      "Bash(git commit -m \"fix: 로그인 fetch failed 오류 수정\n\n- Server Action에서 redirect() 제거하고 success 반환\n- 클라이언트에서 라우팅 처리하도록 변경\n- 에러 메시지 한글화\n- 더 나은 에러 처리 및 로깅 추가\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []

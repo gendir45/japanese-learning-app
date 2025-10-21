@@ -25,14 +25,15 @@ export function LoginForm() {
 
       if (result?.error) {
         setError(result.error);
-      } else {
+        setIsLoading(false);
+      } else if (result?.success) {
         // 로그인 성공 시 대시보드로 이동
         router.push('/dashboard');
         router.refresh();
       }
-    } catch {
+    } catch (err) {
+      console.error('로그인 에러:', err);
       setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
-    } finally {
       setIsLoading(false);
     }
   }
