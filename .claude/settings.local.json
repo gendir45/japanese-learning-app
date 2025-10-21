@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(test -f .env.local)",
-      "Bash(git commit -m \"debug: 로그인 디버깅 로그 추가\n\n- 클라이언트와 서버 양쪽에 상세 로그 추가\n- 에러 원인 파악을 위한 디버깅 코드\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"debug: 로그인 디버깅 로그 추가\n\n- 클라이언트와 서버 양쪽에 상세 로그 추가\n- 에러 원인 파악을 위한 디버깅 코드\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "SlashCommand(/japanese-expert N5 필수 단어 800개를 카테고리별로 분류해서 준비해줘. 현재 데이터베이스에는 150개가 있으니, 나머지 650개를 추가로 만들어야 해.\n\n필요한 정보:\n- character (한자 또는 히라가나)\n- reading (히라가나 읽기)\n- meaning (한국어 뜻)\n- example_sentence (예문)\n- example_reading (예문 읽기)\n- example_translation (예문 번역)\n- category (명사, 동사, 형용사, 부사 등)\n\n카테고리별로 나눠서:\n1. 기본 명사 (사람, 사물, 장소)\n2. 동사 (일상 동작)\n3. 형용사 (감정, 상태, 색상)\n4. 부사 및 기타\n5. 숫자 및 시간 표현\n\nSQL INSERT 문으로 바로 사용할 수 있게 만들어줘.)",
+      "SlashCommand(/japanese-expert:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(vercel ls:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
