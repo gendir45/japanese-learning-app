@@ -10,7 +10,9 @@
       "Bash(git push)",
       "Bash(vercel ls:*)",
       "Bash(npx tsx:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npx supabase:*)",
+      "Bash(node scripts/insert-batches.mjs:*)"
     ],
     "deny": [],
     "ask": []

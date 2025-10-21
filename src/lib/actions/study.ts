@@ -41,23 +41,44 @@ export async function getStudyItems(limit: number = 20): Promise<StudyItemsRespo
   const supabase = await createClient();
 
   try {
-    // 1-1. 모든 학습 항목 가져오기 (order_index 순서대로)
-    // limit을 충분히 크게 설정하여 모든 항목을 가져옴
-    const { data: allItems, error: itemsError } = await supabase
-      .from('learning_items')
-      .select('*')
-      .order('order_index', { ascending: true })
-      .limit(1000); // 충분히 큰 숫자로 설정
-
-    if (itemsError) throw itemsError;
-
-    // 1-2. 사용자 진도 가져오기
+    // 1-1. 사용자 진도 먼저 가져오기
     const { data: progressData, error: progressError } = await supabase
       .from('user_progress')
       .select('*')
       .eq('user_id', userId);
 
     if (progressError) throw progressError;
+
+    // 1-2. 히라가나 완료 여부 확인
+    const { data: hiraganaItems } = await supabase
+      .from('learning_items')
+      .select('id')
+      .eq('type', 'hiragana');
+
+    const hiraganaIds = new Set(hiraganaItems?.map(h => h.id) || []);
+    const hiraganaProgress = progressData?.filter(p => hiraganaIds.has(p.item_id)) || [];
+    const hiraganaCompleted = hiraganaProgress.length === hiraganaIds.size &&
+                              hiraganaProgress.every(p => p.status === 'mastered' || p.repetitions >= 3);
+
+    // 1-3. 학습할 타입 결정 (단계적 학습)
+    let allowedTypes: string[];
+    if (!hiraganaCompleted) {
+      // 히라가나 먼저
+      allowedTypes = ['hiragana'];
+    } else {
+      // 히라가나 완료 후 모든 타입
+      allowedTypes = ['hiragana', 'katakana', 'vocabulary', 'grammar', 'kanji'];
+    }
+
+    // 1-4. 허용된 타입의 학습 항목만 가져오기
+    const { data: allItems, error: itemsError } = await supabase
+      .from('learning_items')
+      .select('*')
+      .in('type', allowedTypes)
+      .order('order_index', { ascending: true })
+      .limit(1000);
+
+    if (itemsError) throw itemsError;
 
     // 진도 맵 생성
     const progressMap = new Map(
