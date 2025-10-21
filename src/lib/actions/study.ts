@@ -57,8 +57,9 @@ export async function getStudyItems(limit: number = 20): Promise<StudyItemsRespo
 
     const hiraganaIds = new Set(hiraganaItems?.map(h => h.id) || []);
     const hiraganaProgress = progressData?.filter(p => hiraganaIds.has(p.item_id)) || [];
+    // 모든 히라가나를 최소 1번 이상 학습했으면 완료로 간주
     const hiraganaCompleted = hiraganaProgress.length === hiraganaIds.size &&
-                              hiraganaProgress.every(p => p.status === 'mastered' || p.repetitions >= 3);
+                              hiraganaProgress.every(p => p.repetitions >= 1);
 
     // 1-3. 가타카나 완료 여부 확인
     const { data: katakanaItems } = await supabase
@@ -68,8 +69,9 @@ export async function getStudyItems(limit: number = 20): Promise<StudyItemsRespo
 
     const katakanaIds = new Set(katakanaItems?.map(k => k.id) || []);
     const katakanaProgress = progressData?.filter(p => katakanaIds.has(p.item_id)) || [];
+    // 모든 가타카나를 최소 1번 이상 학습했으면 완료로 간주
     const katakanaCompleted = katakanaProgress.length === katakanaIds.size &&
-                              katakanaProgress.every(p => p.status === 'mastered' || p.repetitions >= 3);
+                              katakanaProgress.every(p => p.repetitions >= 1);
 
     // 1-4. 학습할 타입 결정 (단계적 학습: 히라가나 → 가타카나 → 단어/문법)
     let allowedTypes: string[];
