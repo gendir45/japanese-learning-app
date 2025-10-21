@@ -12,7 +12,8 @@
       "Bash(npx tsx:*)",
       "Bash(npm install:*)",
       "Bash(npx supabase:*)",
-      "Bash(node scripts/insert-batches.mjs:*)"
+      "Bash(node scripts/insert-batches.mjs:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
