@@ -35,13 +35,13 @@ export default async function DashboardPage() {
   const recentActivity = await getRecentActivity(30);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 min-h-screen bg-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-900 dark:to-blue-950">
       {/* 헤더 */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           안녕하세요, {user.email?.split('@')[0]}님! 👋
         </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-300">
+        <p className="mt-2 text-gray-600 dark:text-blue-200">
           오늘도 일본어 학습을 시작해볼까요?
         </p>
       </div>
@@ -127,7 +127,7 @@ export default async function DashboardPage() {
       {/* 통계 카드 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* 연속 학습 */}
-        <Card>
+        <Card className="border-l-4 border-l-orange-500 dark:border-l-orange-400">
           <CardHeader>
             <CardTitle className="text-lg">연속 학습 🔥</CardTitle>
           </CardHeader>
@@ -142,7 +142,7 @@ export default async function DashboardPage() {
         </Card>
 
         {/* 마스터한 항목 */}
-        <Card>
+        <Card className="border-l-4 border-l-purple-500 dark:border-l-purple-400">
           <CardHeader>
             <CardTitle className="text-lg">마스터 완료 ✨</CardTitle>
           </CardHeader>
@@ -157,7 +157,7 @@ export default async function DashboardPage() {
         </Card>
 
         {/* 정답률 */}
-        <Card>
+        <Card className="border-l-4 border-l-blue-500 dark:border-l-blue-400">
           <CardHeader>
             <CardTitle className="text-lg">정답률 📈</CardTitle>
           </CardHeader>

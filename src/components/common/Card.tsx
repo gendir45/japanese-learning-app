@@ -26,10 +26,10 @@ export function Card({
   ...props
 }: CardProps) {
   const variants = {
-    default: 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
+    default: 'bg-white dark:bg-gray-800/50 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-600',
     interactive:
-      'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-md transition-all cursor-pointer',
-    highlighted: 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-500',
+      'bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-400 hover:shadow-lg dark:hover:shadow-blue-500/20 transition-all cursor-pointer',
+    highlighted: 'bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/40 dark:to-indigo-900/40 border-2 border-blue-300 dark:border-blue-400',
   };
 
   return (
