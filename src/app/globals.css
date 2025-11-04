@@ -11,12 +11,6 @@
   --foreground: #171717;
 }
 
-/* 다크모드 변수 (클래스 기반만 사용) */
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
 /**
  * 커스텀 유틸리티 클래스
  * 플래시카드 3D 변환에 필요
@@ -108,23 +102,11 @@ kbd {
   background: #f1f1f1;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 4px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
-}
-
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
 }

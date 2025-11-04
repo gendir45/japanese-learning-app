@@ -25,33 +25,33 @@ export default function TodayStats({
   const seconds = duration % 60;
 
   return (
-    <div className={`bg-white rounded-xl shadow-md p-6 ${className}`}>
+    <div className={`bg-white rounded-xl shadow-md p-6 ${className}`} style={{ border: '2px solid #d1d5db' }}>
       <h3 className="text-xl font-bold text-gray-900 mb-4">📊 오늘의 학습</h3>
 
       <div className="grid grid-cols-2 gap-4">
         {/* 학습한 카드 */}
-        <div className="bg-blue-50 rounded-lg p-4">
+        <div className="bg-blue-50 rounded-lg p-4" style={{ border: '2px solid #93c5fd' }}>
           <p className="text-sm text-gray-600 mb-1">학습한 카드</p>
           <p className="text-3xl font-bold text-blue-600">{itemsStudied}</p>
           <p className="text-xs text-gray-500">개</p>
         </div>
 
         {/* 정답률 */}
-        <div className="bg-green-50 rounded-lg p-4">
+        <div className="bg-green-50 rounded-lg p-4" style={{ border: '2px solid #86efac' }}>
           <p className="text-sm text-gray-600 mb-1">정답률</p>
           <p className="text-3xl font-bold text-green-600">{accuracy.toFixed(1)}</p>
           <p className="text-xs text-gray-500">%</p>
         </div>
 
         {/* 획득 XP */}
-        <div className="bg-purple-50 rounded-lg p-4">
+        <div className="bg-purple-50 rounded-lg p-4" style={{ border: '2px solid #c4b5fd' }}>
           <p className="text-sm text-gray-600 mb-1">획득 XP</p>
           <p className="text-3xl font-bold text-purple-600">{xpEarned}</p>
           <p className="text-xs text-gray-500">경험치</p>
         </div>
 
         {/* 학습 시간 */}
-        <div className="bg-orange-50 rounded-lg p-4">
+        <div className="bg-orange-50 rounded-lg p-4" style={{ border: '2px solid #fdba74' }}>
           <p className="text-sm text-gray-600 mb-1">학습 시간</p>
           <p className="text-3xl font-bold text-orange-600">
             {minutes > 0 ? minutes : '0'}

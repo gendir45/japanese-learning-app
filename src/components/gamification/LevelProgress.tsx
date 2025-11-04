@@ -15,7 +15,7 @@ export default function LevelProgress({ totalXP, className = '' }: LevelProgress
   const title = getLevelTitle(level);
 
   return (
-    <div className={`bg-white rounded-xl shadow-md p-6 ${className}`}>
+    <div className={`bg-white rounded-xl shadow-md p-6 ${className}`} style={{ border: '2px solid #d1d5db' }}>
       {/* 레벨 헤더 */}
       <div className="flex items-center justify-between mb-4">
         <div>
